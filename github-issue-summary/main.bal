@@ -1,3 +1,4 @@
+
 import ballerina/email;
 import ballerina/log;
 import ballerinax/github;
@@ -24,7 +25,7 @@ public function main() returns error? {
     });
     email:SmtpClient email = check new (host = smtpHost, username = smtpUsername, password = smtpPassword);
 
-    // Get collaborator list
+    //Get collaborator list
     string assigneeSummary = "";
     stream<github:User, github:Error?> collaborators = check github->getCollaborators(orgName, repoName);
     check collaborators.forEach(function(github:User user) {
@@ -38,7 +39,7 @@ public function main() returns error? {
         }
     });
 
-    // Get open issues
+    //Get open issues
     string query = string `repo:${orgName}/${repoName} is:issue is:open`;
     github:SearchResult|github:Error openIssues = github->search(query, github:SEARCH_TYPE_ISSUE, 1);
     if openIssues is github:Error {
@@ -46,7 +47,7 @@ public function main() returns error? {
     }
     int totalOpenIssueCount = openIssues is github:SearchResult ? openIssues.issueCount : 0;
 
-    // Get closed issues
+    //Get closed issues
     query = string `repo:${orgName}/${repoName} is:issue is:closed`;
     github:SearchResult|github:Error closedIssues = github->search(query, github:SEARCH_TYPE_ISSUE, 1);
     if closedIssues is github:Error {
@@ -54,7 +55,7 @@ public function main() returns error? {
     }
     int totalClosedIssueCount = closedIssues is github:SearchResult ? closedIssues.issueCount : 0;
 
-    // Send email
+    //Send email
     string issueSummary = string `ISSUE SUMMARY REPORT${"\n\n"}Repository Name: ${repoName}
         ${"\n"}Total Issues Open: ${totalOpenIssueCount} ${"\n"}Total Issues Closed: ${totalClosedIssueCount}
         ${"\n\n"}Issue Count by Assignee: ${"\n"}${assigneeSummary} ${"\n"}`;
@@ -66,4 +67,5 @@ public function main() returns error? {
     };
     check email->sendMessage(message);
     log:printInfo("Email sent successfully!");
-}
+}  
+  
