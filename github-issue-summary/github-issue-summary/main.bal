@@ -1,4 +1,3 @@
-
 import ballerina/email;
 import ballerina/log;
 import ballerinax/github;
@@ -67,5 +66,7 @@ public function main() returns error? {
     };
     check email->sendMessage(message);
     log:printInfo("Email sent successfully!");
-}  
-  
+    
+}
+
+
