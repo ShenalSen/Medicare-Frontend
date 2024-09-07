@@ -1,8 +1,0 @@
-[package]
-org = "shen_senarathne"
-name = "github_issue_summary"
-version = "0.1.0"
-distribution = "2201.10.0"
-
-[build-options]
-observabilityIncluded = true

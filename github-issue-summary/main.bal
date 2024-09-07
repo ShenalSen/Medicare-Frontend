@@ -66,7 +66,4 @@ public function main() returns error? {
     };
     check email->sendMessage(message);
     log:printInfo("Email sent successfully!");
-    
 }
-
-
