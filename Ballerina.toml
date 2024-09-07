@@ -1,0 +1,29 @@
+# [package]
+# org = "integration_samples"
+# name = "github_issue_summary_to_email"
+# distribution = "2201.7.0"
+# version = "0.1.0"
+# [build-options]
+# observabilityIncluded = true
+
+# 4.5.0
+# 2.10.0
+
+[package]
+org = "integration_samples"
+name = "github_issue_summary_to_email"
+distribution = "2201.7.0"
+version = "0.1.0"
+
+[build-options]
+observabilityIncluded = true
+
+[[dependency]]
+org = "ballerinax"
+name = "github"
+version = "4.5.0"  # Replaced with the actual version.
+
+[[dependency]]
+org = "ballerina"
+name = "email"
+version = "2.10.0" # Replaced with the actual version.
